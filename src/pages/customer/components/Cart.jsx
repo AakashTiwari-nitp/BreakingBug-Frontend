@@ -6,8 +6,11 @@ import emptyCart from "../../../assets/cartimg.png"
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import { addToCart, removeAllFromCart, removeFromCart } from '../../../redux/userSlice';
+//ERROR BUTTON IS MISSING 
 import { BasicButton, LightPurpleButton } from '../../../utils/buttonStyles';
+//
 import { useNavigate } from 'react-router-dom';
+// ERROR HERE IMPORT UPDATECURRENTUSER 
 import { updateCustomer } from '../../../redux/userHandle';
 
 const Cart = ({ setIsCartOpen }) => {
@@ -43,10 +46,13 @@ const Cart = ({ setIsCartOpen }) => {
 
     const productBuyingHandler = (id) => {
         console.log(currentUser);
+        // ERROR HERE UPDATECUSTOMER IS USED INSTEAD OF UPDATECURRENTUSER
         dispatch(updateCustomer(currentUser, currentUser._id));
         setIsCartOpen(false)
         navigate(`/product/buy/${id}`)
     }
+    // ERROR
+    // HERE UPDATECUSTOMER IS USED INSTEAD OF UPDATECURRENTUSER
 
     const allProductsBuyingHandler = () => {
         console.log(currentUser);

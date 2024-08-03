@@ -93,6 +93,7 @@ const OrderSummary = ({ handleNext, handleBack }) => {
                         <ListItem sx={{ py: 1, px: 0 }}>
                             <ListItemText primary="Discount" />
                             <Typography variant="subtitle1" sx={{ color: "green" }}>
+                            {/* ERROR    HERE FORMULA IS INCORRECT  */}
                                 ₹{totalOGPrice - totalNewPrice}
                             </Typography>
                         </ListItem>
@@ -109,6 +110,7 @@ const OrderSummary = ({ handleNext, handleBack }) => {
                             </Typography>
                         </ListItem>
                     </List>
+                    {/* // ERROR */}
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <Typography variant="h6" gutterBottom sx={{ mt: 2, fontWeight: 700 }}>

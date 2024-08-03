@@ -139,6 +139,7 @@ const ViewProductSeller = () => {
                   <GreenButton
                     onClick={() => setShowTab(!showTab)}
                   >
+                    {/* // ERROR */}
                     {showTab ? <KeyboardArrowUp /> : <KeyboardArrowDown />}{`Details`}
                   </GreenButton>
                 </ButtonContainer>
@@ -296,9 +297,11 @@ const ViewProductSeller = () => {
                       <ReviewCard key={index}>
                         <ReviewCardDivision>
                           <Avatar sx={{ width: "60px", height: "60px", marginRight: "1rem", backgroundColor: generateRandomColor(review._id) }}>
+                            {/* // ERROR IS FOUND HERE */}
                             {String(review.reviewername).charAt(0)}
                           </Avatar>
                           <ReviewDetails>
+                            {/* ERROR IS ALSO FOUND HERE */}
                             <Typography variant="h6">{review.reviewername}</Typography>
                             <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
 

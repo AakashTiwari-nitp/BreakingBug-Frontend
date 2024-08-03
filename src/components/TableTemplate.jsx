@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+// ERROR TABLECELLCLASSES IS NOT IMPORTED HERE
 import {Table, TableBody, TableCell, TableContainer, TableRow, styled, tableCellClasses} from '@mui/material';
 
 const TableTemplate = ({columns, rows}) => {
@@ -32,6 +33,7 @@ const TableTemplate = ({columns, rows}) => {
                       return (
                         <StyledTableCell key={column.Id} align={column.align}>
                           {
+                            // ERROR ID IS WRITTEN INSTEAD OF VALUE
                             column.format && typeof value === 'number'
                               ? column.format(value)
                               : value
