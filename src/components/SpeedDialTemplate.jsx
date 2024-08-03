@@ -1,5 +1,5 @@
 import React from 'react'
-import { SpeedDial, styled } from '@mui/material';
+import { SpeedDial, styled, SpeedDialAction } from '@mui/material';
 import TuneIcon from '@mui/icons-material/Tune';
 
 const SpeedDialTemplate = ({ actions }) => {

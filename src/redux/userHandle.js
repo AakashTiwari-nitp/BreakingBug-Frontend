@@ -26,11 +26,13 @@ import {
     updateCurrentUser,
 } from './userSlice';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 export const authUser = (fields, role, mode) => async (dispatch) => {
     dispatch(authRequest());
 
     try {
-        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/${role}${mode}`, fields, {
+        const result = await axios.post(`${BASE_URL}/${role}${mode}`, fields, {
             headers: { 'Content-Type': 'application/json' },
         });
         if (result.data.role) {
@@ -49,7 +51,7 @@ export const addStuff = (address, fields) => async (dispatch) => {
 
     try {
         const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/${address}`, fields, {
-            headers: { 'Content-Type': 'application/json' },---
+            headers: { 'Content-Type': 'application/json' },
         });
 
         if (result.data.message) {
@@ -96,13 +98,11 @@ export const deleteStuff = (id, address) => async (dispatch) => {
 }
 
 export const updateCustomer = (fields, id) => async (dispatch) => {
-    dispatch(updateCurrentUser(fields));
-    await axios.put(`${process.env.REACT_APP_BASE_URL}/CustomerUpdate/${id}`, fields);
-};
-
+    try {
+        dispatch(updateCurrentUser(fields));
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/CustomerUpdate/${id}`, fields);
         dispatch(stuffUpdated());
-
-      } catch (error) {
+    } catch (error) {
 
         dispatch(getError(error));
 
@@ -159,7 +159,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     }
 }
 
-export const getCustomers = (id) => async (dispatch) => {
+export const getCustomers = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {

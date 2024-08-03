@@ -170,19 +170,29 @@ const userSlice = createSlice({
         },
 
         isTokenValid: (state) => {
-            const decodedToken = jwtDecode(state.currentToken);
-            if (state.currentToken) {              state.isLoggedIn = true;
-            } else {
-                localStorage.removeItem('user');
-                state.currentUser = null;
-                state.currentRole = null;
-                state.currentToken = null;
-                state.status = 'idle';
-                state.response = null;
-                state.error = null;
-                state.isLoggedIn = false;
+            if (state.currentToken) {
+              try {
+                const decodedToken = jwtDecode(state.currentToken);
+                
+                const currentTime = Date.now() / 1000;
+                if (decodedToken.exp > currentTime) {
+                  state.isLoggedIn = true;
+                  return;
+                }
+              } catch (error) {
+                console.error("Invalid token", error);
+              }
             }
-        },
+            
+            localStorage.removeItem('user');
+            state.currentUser = null;
+            state.currentRole = null;
+            state.currentToken = null;
+            state.status = 'idle';
+            state.response = null;
+            state.error = null;
+            state.isLoggedIn = false;
+          },
 
         getRequest: (state) => {
             state.loading = true;
@@ -311,6 +321,8 @@ export const {
     removeAllFromCart,
     fetchProductDetailsFromCart,
     updateCurrentUser,
+    setFilteredProducts,
+    getCustomersListFailed
     
 } = userSlice.actions;
 

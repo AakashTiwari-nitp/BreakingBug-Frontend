@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/userSlice';
 import { BasicButton } from '../utils/buttonStyles';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Popup from './Popup';
 import { addStuff } from '../redux/userHandle';
 
@@ -13,14 +13,14 @@ const Products = ({}) => {
 
   const itemsPerPage = 9;
 
-  const { currentRole, responseSearch } = useSelector();
+  const { currentRole, responseSearch, productData } = useSelector();
   const [currentPage, setCurrentPage] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
   const [message, setMessage] = useState("");
 
   const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem + itemsPerPage;
-  const currentItems = (indexOfFirstItem, indexOfLastItem);
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = productData.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleAddToCart = (event, product) => {
     event.stopPropagation();
@@ -49,7 +49,7 @@ const Products = ({}) => {
         {currentItems.map((data, index) => (
           <Grid item xs={12} sm={6} md={4}
             key={index}
-            onClick={() => navigate("/product/view/" + data._id)}
+            onClick={() => Navigate("/product/view/" + data._id)}
             sx={{ cursor: "pointer" }}
           >
             <ProductContainer>
@@ -89,7 +89,7 @@ const Products = ({}) => {
           count={Math.ceil(productData.length / itemsPerPage)}
           page={currentPage}
           color="secondary"
-
+          onChange={(event, value) => setCurrentPage(value)}
         />
       </Container>
 
