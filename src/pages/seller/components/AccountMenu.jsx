@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+// ERROR Add this line to use the useLocation hook
 import { Box, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Tooltip } from '@mui/material';
 import { Logout } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';

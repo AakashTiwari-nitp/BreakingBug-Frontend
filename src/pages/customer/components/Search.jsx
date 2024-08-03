@@ -28,8 +28,11 @@ const Search = () => {
             <InputSearchBase
                 placeholder="Search for products, brands and more"
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => 
+                    //ERROR PREVENT DEFAULT IS NOT DEFINED
+                    setSearchTerm(e.target.value)}
                 onKeyDown={(e) => {
+                    // ERROR
                     if (e.key !== 'Enter') {
                         handleSearch();
                     }

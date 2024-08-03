@@ -39,6 +39,8 @@ const Navbar = () => {
             console.log(currentUser);
             dispatch(updateCustomer(currentUser, currentUser._id));
         }
+        // ERROR  line should me moved to line 35
+        //Cannot access 'anchorElNav' before initialization
     }, [currentRole, currentUser, dispatch, anchorElNav])
 
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -49,7 +51,7 @@ const Navbar = () => {
 
     const [isCartOpen, setIsCartOpen] = React.useState(false);
 
-    // Cart
+    /// ERROR SPACE IS PRESENT BETWEEN HANDLE AND OPENCART 
     const handleOpenCart = () => {
         setIsCartOpen(true);
     };
@@ -58,7 +60,7 @@ const Navbar = () => {
         setIsCartOpen(false);
     };
 
-    // Navigation Menu
+   
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };

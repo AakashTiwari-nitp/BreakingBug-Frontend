@@ -2,6 +2,7 @@ export const timeAgo = (date) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     
     const today = new Date();
+    // ERROR FORMULA IS NOT CORRECT
     const timeDifference = today - date;
 
     if (timeDifference < 60000) {

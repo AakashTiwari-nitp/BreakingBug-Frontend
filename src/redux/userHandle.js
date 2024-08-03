@@ -51,6 +51,7 @@ export const addStuff = (address, fields) => async (dispatch) => {
 
     try {
         const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/${address}`, fields, {
+              // HERE WE REMOVE --- ADD COMMA
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -99,6 +100,7 @@ export const deleteStuff = (id, address) => async (dispatch) => {
 
 export const updateCustomer = (fields, id) => async (dispatch) => {
     try {
+        // ERROR
         dispatch(updateCurrentUser(fields));
         await axios.put(`${process.env.REACT_APP_BASE_URL}/CustomerUpdate/${id}`, fields);
         dispatch(stuffUpdated());
@@ -158,7 +160,7 @@ export const getProductDetails = (id) => async (dispatch) => {
         dispatch(getError(error));
     }
 }
-
+// ERROR HERE ADDRESS IS NOT DEFINED IN PROPS
 export const getCustomers = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 

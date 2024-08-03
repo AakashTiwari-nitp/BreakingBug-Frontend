@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/userSlice';
 import { BasicButton } from '../utils/buttonStyles';
+// ERROR 
+// NAVIGATE IS NOT IMPORTED
 import { Navigate, useNavigate } from 'react-router-dom';
 import Popup from './Popup';
 import { addStuff } from '../redux/userHandle';
@@ -49,6 +51,7 @@ const Products = ({}) => {
         {currentItems.map((data, index) => (
           <Grid item xs={12} sm={6} md={4}
             key={index}
+            // ERROR navigate IS NOT DEFINED NAVIGATE IS DEFINED
             onClick={() => Navigate("/product/view/" + data._id)}
             sx={{ cursor: "pointer" }}
           >

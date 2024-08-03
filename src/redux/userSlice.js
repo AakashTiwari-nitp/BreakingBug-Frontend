@@ -305,7 +305,13 @@ export const {
     getRequest,
     productSuccess,
     sellerProductSuccess,
-    productDetailsSuccess,
+    //ERROR 
+ 	
+// setFilteredProducts was not exported from userSlice.js but was imported in userHandle.js
+ 
+ 	// ERROR
+// getCustomersListFailed was not exported from userSlice.js but was imported in userHandle.js
+//     productDetailsSuccess,
     getProductsFailed,
     getSellerProductsFailed,
     getProductDetailsFailed,
